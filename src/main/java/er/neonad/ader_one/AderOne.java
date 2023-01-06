@@ -1,38 +1,43 @@
 package er.neonad.ader_one;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
+import org.slf4j.Logger;
+
+import er.neonad.ader_one.registry.AderBlocks;
+import er.neonad.ader_one.registry.AderItems;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import org.slf4j.Logger;
 
-@Mod(AderOne.MOD_ID)
+import static er.neonad.ader_one.AderOne.MODID;
+import static er.neonad.ader_one.registry.AderBlocks.*;
+import static er.neonad.ader_one.registry.AderItems.*;
+
+@Mod(MODID)
 public class AderOne {
-    public static final String MOD_ID = "ader_one";
+    public static final String MODID = "ader_one";
     private static final Logger LOGGER = LogUtils.getLogger();
     
     public AderOne() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        AderItems.register(modEventBus);
+        AderBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::buildContents);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -41,11 +46,27 @@ public class AderOne {
 
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MODID, bus = Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+//      Client setup events
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
         }
+    }
+
+//  Register the creative mode tab
+    public void buildContents(CreativeModeTabEvent.Register event) {
+        event.registerCreativeModeTab(
+            new ResourceLocation(MODID, "main"),
+            builder -> builder
+                .title(Component.translatable(String.format("item_group.%s.main", MODID)))
+                .icon(() -> new ItemStack(SPIRIT_SPLINTER.get()))
+//              Add items to the CreativeModeTab
+                .displayItems((enabledFlags, populator, hasPermissions) -> {
+                    populator.accept(SPIRIT_SPLINTER.get());
+//                    populator.accept(...);
+                })
+        );
     }
 }
