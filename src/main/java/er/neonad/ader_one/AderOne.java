@@ -46,15 +46,6 @@ public class AderOne {
 
     }
 
-    @Mod.EventBusSubscriber(modid = MODID, bus = Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-//      Client setup events
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-
-        }
-    }
-
 //  Register the creative mode tab
     public void buildContents(CreativeModeTabEvent.Register event) {
         event.registerCreativeModeTab(
@@ -68,5 +59,13 @@ public class AderOne {
 //                    populator.accept(...);
                 })
         );
+    }
+
+    @Mod.EventBusSubscriber(modid = MODID, bus = Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+
+        }
     }
 }

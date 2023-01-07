@@ -1,11 +1,9 @@
 modLoader = "javafml"
-
 loaderVersion = "[44,)"
 
 license = "MIT License"
 
 [[mods]]
-
 modId = "ader_one"
 version = "1.1.0-1.19.3"
 displayName = "Ader One"
@@ -14,20 +12,20 @@ credits = "Neonader"
 authors = "Neonader"
 description = '''
 Ader One is the first mod in a series of compatible mods by Neonader.
-Ader is dutch for "vein", which is what the features resemble.
+Ader is Dutch for "vein", which is what the features resemble.
 Too lazy to explain the poetry behind it.
 '''
 
 [[dependencies.ader_one]]
-    modId="forge"
-    mandatory=true
-    versionRange="[44,)"
-    ordering="NONE"
-    side="BOTH"
+modId="forge"
+mandatory=true
+versionRange="[44,)"
+ordering="NONE"
+side="BOTH"
 
 [[dependencies.ader_one]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.19.3,1.20)"
-    ordering="NONE"
-    side="BOTH"
+modId="minecraft"
+mandatory=true
+versionRange="[1.19.3,1.20)"
+ordering="NONE"
+side="BOTH"
