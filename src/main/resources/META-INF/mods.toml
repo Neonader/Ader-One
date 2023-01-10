@@ -17,15 +17,15 @@ Too lazy to explain the poetry behind it.
 '''
 
 [[dependencies.ader_one]]
-modId="forge"
-mandatory=true
-versionRange="[44,)"
-ordering="NONE"
-side="BOTH"
+modId = "forge"
+mandatory = true
+versionRange = "[44,)"
+ordering = "NONE"
+side = "BOTH"
 
 [[dependencies.ader_one]]
-modId="minecraft"
-mandatory=true
-versionRange="[1.19.3,1.20)"
-ordering="NONE"
-side="BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.3,1.20)"
+ordering = "NONE"
+side = "BOTH"
