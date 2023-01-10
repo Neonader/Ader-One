@@ -2,14 +2,11 @@ package er.neonad.ader_one;
 
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
-
 import er.neonad.ader_one.registry.AderBlocks;
 import er.neonad.ader_one.registry.AderItems;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -27,45 +24,45 @@ import static er.neonad.ader_one.registry.AderItems.*;
 
 @Mod(MODID)
 public class AderOne {
-    public static final String MODID = "ader_one";
-    private static final Logger LOGGER = LogUtils.getLogger();
-    
-    public AderOne() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+   public static final String MODID = "ader_one";
+   private static final Logger LOGGER = LogUtils.getLogger();
 
-        AderItems.register(modEventBus);
-        AderBlocks.register(modEventBus);
+   public AderOne() {
+      IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::buildContents);
+      AderItems.register(modEventBus);
+      AderBlocks.register(modEventBus);
 
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+      modEventBus.addListener(this::commonSetup);
+      modEventBus.addListener(this::buildContents);
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+      MinecraftForge.EVENT_BUS.register(this);
+   }
 
-    }
+   private void commonSetup(final FMLCommonSetupEvent event) {
 
-//  Register the creative mode tab
-    public void buildContents(CreativeModeTabEvent.Register event) {
-        event.registerCreativeModeTab(
+   }
+
+// Register the creative mode tab
+   public void buildContents(CreativeModeTabEvent.Register event) {
+      event.registerCreativeModeTab(
             new ResourceLocation(MODID, "main"),
             builder -> builder
-                .title(Component.translatable(String.format("item_group.%s.main", MODID)))
-                .icon(() -> new ItemStack(SPIRIT_SPLINTER.get()))
-//              Add items to the CreativeModeTab
-                .displayItems((enabledFlags, populator, hasPermissions) -> {
-                    populator.accept(SPIRIT_SPLINTER.get());
-//                    populator.accept(...);
-                })
-        );
-    }
+                  .title(Component.translatable(String.format("item_group.%s.main", MODID)))
+                  .icon(() -> new ItemStack(SPIRIT_SPLINTER.get()))
+//                Add items to the CreativeModeTab
+                  .displayItems((enabledFlags, populator, hasPermissions) -> {
+                     populator.accept(SPIRIT_SPLINTER.get());
+                     populator.accept(SPIRIT_PLANKS.get());
+                  })
+      );
+   }
 
-    @Mod.EventBusSubscriber(modid = MODID, bus = Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
+   @Mod.EventBusSubscriber(modid = MODID, bus = Bus.MOD, value = Dist.CLIENT)
+   public static class ClientModEvents {
+      @SubscribeEvent
+      public static void onClientSetup(FMLClientSetupEvent event) {
 
-        }
-    }
+      }
+   }
 }
