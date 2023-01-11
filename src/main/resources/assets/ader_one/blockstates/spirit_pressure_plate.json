@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "ader_one:block/spirit_pressure_plate" },
+    "powered=true": { "model": "ader_one:block/spirit_pressure_plate_down" }
+  }
+}

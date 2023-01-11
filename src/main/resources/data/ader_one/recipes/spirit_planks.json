@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "ader_one:spirit_stems"
+    }
+  ],
+  "result": {
+    "item": "ader_one:spirit_planks",
+    "count": 4
+  }
+}

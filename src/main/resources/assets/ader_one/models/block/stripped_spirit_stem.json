@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ader_one:block/stripped_spirit_stem_top",
+    "side": "ader_one:block/stripped_spirit_stem"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "ader_one:spirit_planks"
+    }
+  ],
+  "result": {
+    "item": "ader_one:spirit_button"
+  }
+}

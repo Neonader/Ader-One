@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "ader_one:stripped_spirit_stem"
+    }
+  },
+  "result": {
+    "item": "ader_one:stripped_spirit_hyphae",
+    "count": 3
+  }
+}

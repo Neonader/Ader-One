@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "top": "ader_one:block/spirit_door_top",
+    "bottom": "ader_one:block/spirit_door_bottom"
+  }
+}
