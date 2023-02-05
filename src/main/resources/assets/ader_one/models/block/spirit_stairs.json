@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "ader_one:block/spirit_planks",
-    "top": "ader_one:block/spirit_planks",
-    "side": "ader_one:block/spirit_planks"
-  }
-}

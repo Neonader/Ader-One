@@ -1,6 +1,0 @@
-{
-  "parent": "block/button",
-  "textures": {
-    "texture": "ader_one:block/spirit_planks"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/flower_pot_cross",
-  "textures": {
-    "plant": "ader_one:block/soul_turf_pot"
-  }
-}

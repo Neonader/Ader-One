@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "ader_one:spirit_soil"
-  },
-  "result": "ader_one:spirit_splinter",
-  "experience": 1.50,
-  "cookingtime": 100
-}
