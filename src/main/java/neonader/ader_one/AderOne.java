@@ -2,7 +2,7 @@ package neonader.ader_one;
 
 import com.mojang.logging.LogUtils;
 import neonader.ader_one.registry.AderCreativeModeTab;
-import neonader.ader_one.registry.AderBlocks;
+import neonader.ader_one.registry.block.AderBlocks;
 import org.slf4j.Logger;
 import neonader.ader_one.registry.AderItems;
 import net.minecraftforge.common.MinecraftForge;

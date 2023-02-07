@@ -1,7 +1,5 @@
-package neonader.ader_one.registry;
+package neonader.ader_one.registry.block;
 
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

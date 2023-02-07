@@ -1,6 +1,7 @@
 package neonader.ader_one.registry;
 
 import neonader.ader_one.AderOne;
+import neonader.ader_one.registry.block.AderBlocks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -19,8 +20,8 @@ public class AderCreativeModeTab {
                         populator.accept(SPIRIT_SPLINTER.get());
                         /*populator.accept(AderBlocks.SPIRIT_PLANKS.get());
                         populator.accept(AderBlocks.SOUL_NYLIUM.get());
-                        populator.accept(AderBlocks.SPIRIT_NYLIUM.get());
-                        populator.accept(AderBlocks.SPIRIT_SOIL.get());*/
+                        populator.accept(AderBlocks.SPIRIT_NYLIUM.get());*/
+                        populator.accept(AderBlocks.SPIRIT_SOIL.get());
                     })
         );
     }

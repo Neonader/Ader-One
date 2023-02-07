@@ -1,8 +1,9 @@
 package neonader.ader_one.registry;
 
 import neonader.ader_one.AderOne;
+import neonader.ader_one.registry.block.AderBlocks;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,8 +17,10 @@ public class AderItems {
           () -> new Item(new Item.Properties())
     );
 
+    public static final RegistryObject<Item> SPIRIT_SOIL = registerItem("soul_soil",
+          () -> new BlockItem(AderBlocks.SPIRIT_SOIL.get(), new Item.Properties()));
+
     private static RegistryObject<Item> registerItem(String name, Supplier<Item> item) {
-        RegistryObject<Item> registeredItem = ITEMS.register(name, item);
-        return registeredItem;
+        return ITEMS.register(name, item);
     }
 }
