@@ -1,8 +1,9 @@
 package neonader.ader_one;
 
 import com.mojang.logging.LogUtils;
+import neonader.ader_one.data.AderDataGenerator;
 import neonader.ader_one.registry.AderCreativeModeTab;
-import neonader.ader_one.registry.block.AderBlocks;
+import neonader.ader_one.registry.AderBlocks;
 import org.slf4j.Logger;
 import neonader.ader_one.registry.AderItems;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,12 +18,12 @@ public class AderOne {
 
     public AderOne() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        MinecraftForge.EVENT_BUS.register(this);
 
         AderItems.ITEMS.register(modEventBus);
         AderBlocks.BLOCKS.register(modEventBus);
 
+        modEventBus.addListener(AderDataGenerator::gatherData);
         modEventBus.addListener(AderCreativeModeTab::buildContents);
-
-        MinecraftForge.EVENT_BUS.register(this);
     }
 }
