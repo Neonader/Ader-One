@@ -2,12 +2,14 @@ package neonader.ader_one.registry;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
 import java.util.function.Supplier;
 
 import static neonader.ader_one.AderOne.MODID;
@@ -19,18 +21,20 @@ public class AderBlocks {
           () -> new Block(copy(Blocks.SOUL_SOIL))
     );
     public static final RegistryObject<Block> SOUL_NYLIUM = registerBlock("soul_nylium",
-          () -> new Block(copy(Blocks.WARPED_NYLIUM))
+          () -> nylium(MaterialColor.WARPED_NYLIUM)
     );
     public static final RegistryObject<Block> SPIRIT_NYLIUM = registerBlock("spirit_nylium",
-          () -> new Block(copy(Blocks.WARPED_NYLIUM))
+          () -> nylium(MaterialColor.GOLD)
     );
     public static final RegistryObject<Block> SPIRIT_PLANKS = registerBlock("spirit_planks",
-          () -> new Block(copy(Blocks.WARPED_PLANKS))
+          () -> new Block(of(Material.NETHER_WOOD, MaterialColor.WARPED_STEM)
+                .strength(2.0F, 3.0F)
+                .sound(SoundType.NETHER_WOOD))
     );
-    /*public static final RegistryObject<Block> SPIRIT_STEM = registerBlock("spirit_stem",
-          () ->
+    public static final RegistryObject<Block> SPIRIT_STEM = registerBlock("spirit_stem",
+          () -> netherStem(MaterialColor.WARPED_STEM)
     );
-    public static final RegistryObject<Block> STRIPPED_SPIRIT_STEM = registerBlock("stripped_spirit_stem",
+    /*public static final RegistryObject<Block> STRIPPED_SPIRIT_STEM = registerBlock("stripped_spirit_stem",
           () ->
     );
     public static final RegistryObject<Block> SPIRIT_HYPHAE = registerBlock("spirit_hyphae",
@@ -83,16 +87,33 @@ public class AderBlocks {
           )
     );*/
 
-    // return a copy of the BlockBehaviour.Properties of a Block
+    private static Block netherStem(MaterialColor color) {
+        return new RotatedPillarBlock(of(Material.NETHER_WOOD, color)
+              .strength(2.0F)
+              .sound(SoundType.STEM)
+        );
+    }
+    private static Block nylium(MaterialColor color) {
+        return new NyliumBlock(of(Material.STONE, color)
+              .requiresCorrectToolForDrops()
+              .strength(0.4F)
+              .sound(SoundType.NYLIUM)
+              .randomTicks()
+        );
+    }
+
     private static BlockBehaviour.Properties copy(Block block) {
         return BlockBehaviour.Properties.copy(block);
     }
-    // add a supplier to the list of entries of BLOCKS
-    // register that block to ITEMS
-    // return the supplier as a RegistryObject
+    private static BlockBehaviour.Properties of(Material material, MaterialColor color) {
+        return BlockBehaviour.Properties.of(material, color);
+    }
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> registeredBlock = BLOCKS.register(name, block);
-        AderItems.ITEMS.register(name, () -> new BlockItem(registeredBlock.get(), new Item.Properties()));
+        AderItems.ITEMS.register(name,
+              () -> new BlockItem(registeredBlock.get(), new Item.Properties())
+        );
         return registeredBlock;
     }
 }

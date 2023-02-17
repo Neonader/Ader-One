@@ -1,6 +1,8 @@
 package neonader.ader_one.data.server;
 
 import neonader.ader_one.AderOne;
+import neonader.ader_one.common.tags.AderBlockTags;
+import neonader.ader_one.registry.AderBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.BlockTagsProvider;
@@ -16,6 +18,6 @@ public class AderBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(@NotNull HolderLookup.Provider provider) {
-
+        this.tag(AderBlockTags.SPIRIT_STEMS).add(AderBlocks.SPIRIT_STEM.get());
     }
 }
