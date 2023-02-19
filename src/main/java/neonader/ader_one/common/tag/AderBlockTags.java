@@ -1,4 +1,4 @@
-package neonader.ader_one.common.tags;
+package neonader.ader_one.common.tag;
 
 import neonader.ader_one.AderOne;
 import net.minecraft.core.registries.Registries;

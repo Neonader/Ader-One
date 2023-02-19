@@ -2,6 +2,7 @@ package neonader.ader_one;
 
 import neonader.ader_one.data.server.AderBlockTagsProvider;
 import neonader.ader_one.data.server.AderItemTagsProvider;
+import neonader.ader_one.data.server.AderRecipeProvider;
 import neonader.ader_one.registry.AderBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -42,14 +43,12 @@ public class AderOne {
         PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
         ExistingFileHelper helper = event.getExistingFileHelper();
+        boolean run = event.includeServer();
 
         AderBlockTagsProvider blockTags = new AderBlockTagsProvider(output, provider, helper);
-        generator.addProvider(event.includeServer(),
-              blockTags
-        );
-        generator.addProvider(event.includeServer(),
-              new AderItemTagsProvider(output, provider, blockTags, helper)
-        );
+        generator.addProvider(run, blockTags);
+        generator.addProvider(run, new AderItemTagsProvider(output, provider, blockTags, helper));
+        generator.addProvider(run, new AderRecipeProvider(output));
     }
 
     // register the main creative mode tab
