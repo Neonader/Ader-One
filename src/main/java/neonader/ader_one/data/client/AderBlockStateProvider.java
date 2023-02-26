@@ -1,14 +1,17 @@
 package neonader.ader_one.data.client;
 
 import neonader.ader_one.AderOne;
+import neonader.ader_one.common.AderBlockFamilies;
+import net.minecraft.data.BlockFamily;
+import net.minecraft.data.BlockFamily.Variant;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Map;
 
 import static neonader.ader_one.registry.AderBlocks.*;
 
@@ -20,13 +23,91 @@ public class AderBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(SPIRIT_SOIL.get());
-        // TODO: Spirit Planks block family
+        blockFamily(AderBlockFamilies.SPIRIT_PLANKS_FAMILY);
         nyliumBlock(SOUL_NYLIUM.get());
-        // TODO: Spirit Nylium connected texture
+        // TODO: Spirit Nylium model
         logBlock((RotatedPillarBlock) SPIRIT_STEM.get());
         woodBlock((RotatedPillarBlock) SPIRIT_HYPHAE.get(), SPIRIT_STEM.get());
         logBlock((RotatedPillarBlock) STRIPPED_SPIRIT_STEM.get());
         woodBlock((RotatedPillarBlock) STRIPPED_SPIRIT_HYPHAE.get(), STRIPPED_SPIRIT_STEM.get());
+    }
+
+    private void blockFamily(BlockFamily family) {
+        Block baseBlock = family.getBaseBlock();
+        Map<Variant, Block> variants = family.getVariants();
+
+        simpleBlock(baseBlock);
+
+        if (variants.containsKey(Variant.BUTTON)) {
+            ButtonBlock buttonVariant = (ButtonBlock) family.get(Variant.BUTTON);
+            buttonBlock(
+                  buttonVariant,
+                  models().withExistingParent(
+                        name(buttonVariant),
+                        "block/button"
+                  ).texture("texture", blockTexture(baseBlock)),
+                  models().withExistingParent(
+                        name(buttonVariant) + "_pressed",
+                        "block/button_pressed"
+                  ).texture("texture", blockTexture(baseBlock))
+            );
+        }
+        if (variants.containsKey(Variant.DOOR)) {
+            DoorBlock doorVariant = (DoorBlock) family.get(Variant.DOOR);
+            doorBlock(doorVariant, extend(blockTexture(doorVariant), "_bottom"), extend(blockTexture(doorVariant), "_top"));
+        }
+        if (variants.containsKey(Variant.FENCE)) {
+            FenceBlock fenceVariant = (FenceBlock) family.get(Variant.FENCE);
+            fenceBlock(fenceVariant, blockTexture(baseBlock));
+        }
+        if (variants.containsKey(Variant.FENCE_GATE)) {
+            FenceGateBlock fenceGateVariant = (FenceGateBlock) family.get(Variant.FENCE_GATE);
+            fenceGateBlock(fenceGateVariant, blockTexture(baseBlock));
+        }
+        if (variants.containsKey(Variant.SIGN)) {
+            SignBlock signVariant = (SignBlock) family.get(Variant.SIGN);
+            simpleBlock(
+                  signVariant,
+                  models().getBuilder(
+                        name(signVariant)
+                  ).texture("particle", blockTexture(baseBlock))
+            );
+        }
+        if (variants.containsKey(Variant.SLAB)) {
+            SlabBlock slabVariant = (SlabBlock) family.get(Variant.SLAB);
+            slabBlock(slabVariant, blockTexture(baseBlock), blockTexture(baseBlock));
+        }
+        if (variants.containsKey(Variant.STAIRS)) {
+            StairBlock stairsVariant = (StairBlock) family.get(Variant.STAIRS);
+            stairsBlock(stairsVariant, blockTexture(baseBlock));
+        }
+        if (variants.containsKey(Variant.PRESSURE_PLATE)) {
+            PressurePlateBlock pressurePlateVariant = (PressurePlateBlock) family.get(Variant.PRESSURE_PLATE);
+            pressurePlateBlock(
+                  pressurePlateVariant,
+                  models().withExistingParent(
+                        name(pressurePlateVariant),
+                        "block/pressure_plate_up"
+                  ).texture("texture", blockTexture(baseBlock)),
+                  models().withExistingParent(
+                        name(pressurePlateVariant) + "_down",
+                        "block/pressure_plate_down"
+                  ).texture("texture", blockTexture(baseBlock))
+            );
+        }
+        if (variants.containsKey(Variant.TRAPDOOR)) {
+            TrapDoorBlock trapdoorVariant = (TrapDoorBlock) family.get(Variant.TRAPDOOR);
+            trapdoorBlock(trapdoorVariant, blockTexture(trapdoorVariant), true);
+        }
+        if (variants.containsKey(Variant.WALL_SIGN)) {
+            WallSignBlock wallSignVariant = (WallSignBlock) family.get(Variant.WALL_SIGN);
+            simpleBlock(
+                  wallSignVariant,
+                  models().getBuilder(
+                        name(wallSignVariant)
+                  ).texture("particle", blockTexture(baseBlock))
+            );
+        }
     }
 
     private void woodBlock(RotatedPillarBlock woodBlock, Block logBlock) {
