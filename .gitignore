@@ -10,4 +10,4 @@ build/
 *.iws
 *.iml
 
-.cache/
+generated/

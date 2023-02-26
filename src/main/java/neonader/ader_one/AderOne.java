@@ -1,5 +1,6 @@
 package neonader.ader_one;
 
+import neonader.ader_one.data.client.AderBlockStateProvider;
 import neonader.ader_one.data.server.AderBlockTagsProvider;
 import neonader.ader_one.data.server.AderItemTagsProvider;
 import neonader.ader_one.data.server.AderRecipeProvider;
@@ -43,12 +44,15 @@ public class AderOne {
         PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
         ExistingFileHelper helper = event.getExistingFileHelper();
-        boolean run = event.includeServer();
 
+        boolean runClient = event.includeClient();
+        generator.addProvider(runClient, new AderBlockStateProvider(output, helper));
+
+        boolean runServer = event.includeServer();
         AderBlockTagsProvider blockTags = new AderBlockTagsProvider(output, provider, helper);
-        generator.addProvider(run, blockTags);
-        generator.addProvider(run, new AderItemTagsProvider(output, provider, blockTags, helper));
-        generator.addProvider(run, new AderRecipeProvider(output));
+        generator.addProvider(runServer, blockTags);
+        generator.addProvider(runServer, new AderItemTagsProvider(output, provider, blockTags, helper));
+        generator.addProvider(runServer, new AderRecipeProvider(output));
     }
 
     // register the main creative mode tab

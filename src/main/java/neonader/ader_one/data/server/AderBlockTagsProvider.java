@@ -18,6 +18,11 @@ public class AderBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(@NotNull HolderLookup.Provider provider) {
-        tag(AderBlockTags.SPIRIT_STEMS).add(AderBlocks.SPIRIT_STEM.get());
+        tag(AderBlockTags.SPIRIT_STEMS).add(
+              AderBlocks.SPIRIT_STEM.get(),
+              AderBlocks.SPIRIT_HYPHAE.get(),
+              AderBlocks.STRIPPED_SPIRIT_STEM.get(),
+              AderBlocks.STRIPPED_SPIRIT_HYPHAE.get()
+        );
     }
 }

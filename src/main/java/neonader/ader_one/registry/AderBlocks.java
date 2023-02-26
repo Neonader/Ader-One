@@ -34,16 +34,16 @@ public class AderBlocks {
     public static final RegistryObject<Block> SPIRIT_STEM = registerBlock("spirit_stem",
           () -> netherStem(MaterialColor.WARPED_STEM)
     );
-    /*public static final RegistryObject<Block> STRIPPED_SPIRIT_STEM = registerBlock("stripped_spirit_stem",
-          () ->
+    public static final RegistryObject<Block> STRIPPED_SPIRIT_STEM = registerBlock("stripped_spirit_stem",
+          () -> netherStem(MaterialColor.WARPED_STEM)
     );
     public static final RegistryObject<Block> SPIRIT_HYPHAE = registerBlock("spirit_hyphae",
-          () ->
+          () -> netherStem(MaterialColor.WARPED_STEM)
     );
     public static final RegistryObject<Block> STRIPPED_SPIRIT_HYPHAE = registerBlock("stripped_spirit_hyphae",
-          () ->
+          () -> netherStem(MaterialColor.WARPED_STEM)
     );
-    public static final RegistryObject<Block> SOUL_FUNGUS = registerBlock("soul_fungus",
+    /*public static final RegistryObject<Block> SOUL_FUNGUS = registerBlock("soul_fungus",
           () ->
     );
     public static final RegistryObject<Block> POTTED_SOUL_FUNGUS = registerBlock("potted_soul_fungus",
