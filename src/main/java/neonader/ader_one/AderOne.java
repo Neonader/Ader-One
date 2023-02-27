@@ -1,6 +1,8 @@
 package neonader.ader_one;
 
+import com.mojang.logging.LogUtils;
 import neonader.ader_one.data.client.AderBlockStateProvider;
+import neonader.ader_one.data.client.AderItemModelProvider;
 import neonader.ader_one.data.server.AderBlockTagsProvider;
 import neonader.ader_one.data.server.AderItemTagsProvider;
 import neonader.ader_one.data.server.AderRecipeProvider;
@@ -19,12 +21,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.slf4j.Logger;
 
 import java.util.concurrent.CompletableFuture;
 
 @Mod(AderOne.MODID)
 public class AderOne {
     public static final String MODID = "ader_one";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public AderOne() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -47,6 +51,7 @@ public class AderOne {
 
         boolean runClient = event.includeClient();
         generator.addProvider(runClient, new AderBlockStateProvider(output, helper));
+        generator.addProvider(runClient, new AderItemModelProvider(output, helper));
 
         boolean runServer = event.includeServer();
         AderBlockTagsProvider blockTags = new AderBlockTagsProvider(output, provider, helper);

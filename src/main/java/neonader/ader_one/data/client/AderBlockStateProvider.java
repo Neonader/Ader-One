@@ -52,18 +52,22 @@ public class AderBlockStateProvider extends BlockStateProvider {
                   ).texture("texture", blockTexture(baseBlock))
             );
         }
+
         if (variants.containsKey(Variant.DOOR)) {
             DoorBlock doorVariant = (DoorBlock) family.get(Variant.DOOR);
             doorBlock(doorVariant, extend(blockTexture(doorVariant), "_bottom"), extend(blockTexture(doorVariant), "_top"));
         }
+
         if (variants.containsKey(Variant.FENCE)) {
             FenceBlock fenceVariant = (FenceBlock) family.get(Variant.FENCE);
             fenceBlock(fenceVariant, blockTexture(baseBlock));
         }
+
         if (variants.containsKey(Variant.FENCE_GATE)) {
             FenceGateBlock fenceGateVariant = (FenceGateBlock) family.get(Variant.FENCE_GATE);
             fenceGateBlock(fenceGateVariant, blockTexture(baseBlock));
         }
+
         if (variants.containsKey(Variant.SIGN)) {
             SignBlock signVariant = (SignBlock) family.get(Variant.SIGN);
             simpleBlock(
@@ -73,14 +77,17 @@ public class AderBlockStateProvider extends BlockStateProvider {
                   ).texture("particle", blockTexture(baseBlock))
             );
         }
+
         if (variants.containsKey(Variant.SLAB)) {
             SlabBlock slabVariant = (SlabBlock) family.get(Variant.SLAB);
             slabBlock(slabVariant, blockTexture(baseBlock), blockTexture(baseBlock));
         }
+
         if (variants.containsKey(Variant.STAIRS)) {
             StairBlock stairsVariant = (StairBlock) family.get(Variant.STAIRS);
             stairsBlock(stairsVariant, blockTexture(baseBlock));
         }
+
         if (variants.containsKey(Variant.PRESSURE_PLATE)) {
             PressurePlateBlock pressurePlateVariant = (PressurePlateBlock) family.get(Variant.PRESSURE_PLATE);
             pressurePlateBlock(
@@ -95,10 +102,12 @@ public class AderBlockStateProvider extends BlockStateProvider {
                   ).texture("texture", blockTexture(baseBlock))
             );
         }
+
         if (variants.containsKey(Variant.TRAPDOOR)) {
             TrapDoorBlock trapdoorVariant = (TrapDoorBlock) family.get(Variant.TRAPDOOR);
             trapdoorBlock(trapdoorVariant, blockTexture(trapdoorVariant), true);
         }
+
         if (variants.containsKey(Variant.WALL_SIGN)) {
             WallSignBlock wallSignVariant = (WallSignBlock) family.get(Variant.WALL_SIGN);
             simpleBlock(

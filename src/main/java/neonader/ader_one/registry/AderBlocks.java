@@ -93,6 +93,7 @@ public class AderBlocks {
               .sound(SoundType.STEM)
         );
     }
+
     private static Block nylium(MaterialColor color) {
         return new NyliumBlock(of(Material.STONE, color)
               .requiresCorrectToolForDrops()
@@ -105,6 +106,7 @@ public class AderBlocks {
     private static BlockBehaviour.Properties copy(Block block) {
         return BlockBehaviour.Properties.copy(block);
     }
+
     private static BlockBehaviour.Properties of(Material material, MaterialColor color) {
         return BlockBehaviour.Properties.of(material, color);
     }
