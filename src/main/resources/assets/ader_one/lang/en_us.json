@@ -5,5 +5,8 @@
   "block.ader_one.soul_nylium":               "Soul Nylium",
   "block.ader_one.spirit_nylium":             "Spirit Nylium",
   "block.ader_one.spirit_planks":             "Spirit Planks",
-  "block.ader_one.spirit_stem":               "Spirit Stem"
+  "block.ader_one.spirit_stem":               "Spirit Stem",
+  "block.ader_one.stripped_spirit_stem":      "Stripped Spirit Stem",
+  "block.ader_one.spirit_hyphae":             "Spirit Hyphae",
+  "block.ader_one.stripped_spirit_hyphae":    "Stripped Spirit Hyphae"
 }
