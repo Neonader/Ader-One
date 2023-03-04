@@ -51,6 +51,10 @@ public class AderBlockStateProvider extends BlockStateProvider {
                         "block/button_pressed"
                   ).texture("texture", blockTexture(baseBlock))
             );
+            models().withExistingParent(
+                  name(buttonVariant) + "_inventory",
+                  "block/button_inventory"
+            ).texture("texture", blockTexture(baseBlock));
         }
 
         if (variants.containsKey(Variant.DOOR)) {
@@ -61,6 +65,10 @@ public class AderBlockStateProvider extends BlockStateProvider {
         if (variants.containsKey(Variant.FENCE)) {
             FenceBlock fenceVariant = (FenceBlock) family.get(Variant.FENCE);
             fenceBlock(fenceVariant, blockTexture(baseBlock));
+            models().withExistingParent(
+                  name(fenceVariant) + "_inventory",
+                  "block/fence_inventory"
+            ).texture("texture", blockTexture(baseBlock));
         }
 
         if (variants.containsKey(Variant.FENCE_GATE)) {

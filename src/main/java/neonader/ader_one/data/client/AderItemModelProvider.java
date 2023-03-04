@@ -1,6 +1,7 @@
 package neonader.ader_one.data.client;
 
 import neonader.ader_one.AderOne;
+import neonader.ader_one.registry.AderBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -28,6 +29,10 @@ public class AderItemModelProvider extends ItemModelProvider {
         ).collect(Collectors.toSet());
         items.removeAll(blockItems);
 
+        // Specific cases
+        blockItems.remove(ForgeRegistries.ITEMS.getValue(modLoc("spirit_fence")));
+        inventoryItem(AderBlocks.SPIRIT_FENCE.get().asItem());
+
         // TODO: Spirit Nylium model
         blockItems.remove(ForgeRegistries.ITEMS.getValue(modLoc("spirit_nylium")));
 
@@ -42,6 +47,11 @@ public class AderItemModelProvider extends ItemModelProvider {
     private void generatedItem(Item item) {
         withExistingParent(name(item), "item/generated")
               .texture("layer0", itemLoc(name(item)));
+    }
+
+    private void inventoryItem(Item fence) {
+        withExistingParent(name(fence), blockLoc(name(fence) + "_inventory")
+        );
     }
 
     private ResourceLocation blockLoc(String name) {

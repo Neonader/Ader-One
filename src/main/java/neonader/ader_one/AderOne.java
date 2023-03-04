@@ -68,10 +68,26 @@ public class AderOne {
                     .icon(() -> new ItemStack(AderItems.SPIRIT_SPLINTER.get()))
                     .displayItems((enabledFlags, populator, hasPermissions) -> {
                         populator.accept(AderItems.SPIRIT_SPLINTER.get());
+                        populator.accept(AderBlocks.SPIRIT_SOIL.get());
+                        populator.accept(AderBlocks.SPIRIT_STEM.get());
+                        populator.accept(AderBlocks.SPIRIT_HYPHAE.get());
+                        populator.accept(AderBlocks.STRIPPED_SPIRIT_STEM.get());
+                        populator.accept(AderBlocks.STRIPPED_SPIRIT_HYPHAE.get());
                         populator.accept(AderBlocks.SPIRIT_PLANKS.get());
+                        populator.accept(AderBlocks.SPIRIT_STAIRS.get());
+                        populator.accept(AderBlocks.SPIRIT_SLAB.get());
+                        populator.accept(AderBlocks.SPIRIT_FENCE.get());
+//                        populator.accept(AderBlocks.SPIRIT_FENCE_GATE.get());
+//                        populator.accept(AderBlocks.SPIRIT_DOOR.get());
+//                        populator.accept(AderBlocks.SPIRIT_TRAPDOOR.get());
+//                        populator.accept(AderBlocks.SPIRIT_PRESSURE_PLATE.get());
+//                        populator.accept(AderBlocks.SPIRIT_BUTTON.get());
                         populator.accept(AderBlocks.SOUL_NYLIUM.get());
                         populator.accept(AderBlocks.SPIRIT_NYLIUM.get());
-                        populator.accept(AderBlocks.SPIRIT_SOIL.get());
+//                        populator.accept(AderBlocks.SOUL_WART_BLOCK.get());
+//                        populator.accept(AderBlocks.SOUL_FUNGUS.get());
+//                        populator.accept(AderBlocks.SOUL_TURF.get());
+//                        populator.accept(AderBlocks.SPIRIT_SIGN.get());
                     })
         );
     }
