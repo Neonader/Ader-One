@@ -1,6 +1,7 @@
 {
   "item_group.ader_one.main":                 "Ader One",
   "item.ader_one.spirit_splinter":            "Spirit Splinter",
+  "item.ader_one.spirit_sign":                "Spirit Sign",
   "block.ader_one.spirit_soil":               "Spirit Soil",
   "block.ader_one.soul_nylium":               "Soul Nylium",
   "block.ader_one.spirit_nylium":             "Spirit Nylium",
@@ -11,5 +12,15 @@
   "block.ader_one.spirit_planks":             "Spirit Planks",
   "block.ader_one.spirit_stairs":             "Spirit Stairs",
   "block.ader_one.spirit_slab":               "Spirit Slab",
-  "block.ader_one.spirit_fence":              "Spirit Fence"
+  "block.ader_one.spirit_fence":              "Spirit Fence",
+  "block.ader_one.spirit_fence_gate":         "Spirit Fence Gate",
+  "block.ader_one.spirit_sign":               "Spirit Sign",
+  "block.ader_one.spirit_wall_sign":          "Spirit Wall Sign",
+  "block.ader_one.spirit_button":             "Spirit Button",
+  "block.ader_one.spirit_pressure_plate":     "Spirit Pressure Plate",
+  "block.ader_one.soul_fungus":               "Soul Fungus",
+  "block.ader_one.potted_soul_fungus":        "Potted Soul Fungus",
+  "block.ader_one.soul_turf":                 "Soul Turf",
+  "block.ader_one.potted_soul_turf":          "Potted Soul Turf",
+  "block.ader_one.soul_wart_block":           "Soul Wart Block"
 }

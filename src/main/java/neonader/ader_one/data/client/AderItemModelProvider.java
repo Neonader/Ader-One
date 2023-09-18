@@ -1,7 +1,7 @@
 package neonader.ader_one.data.client;
 
 import neonader.ader_one.AderOne;
-import neonader.ader_one.registry.AderBlocks;
+import neonader.ader_one.registry.AderItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -29,15 +29,29 @@ public class AderItemModelProvider extends ItemModelProvider {
         ).collect(Collectors.toSet());
         items.removeAll(blockItems);
 
+        Set<Item> generatedBlockItems = Set.of(
+              getItem("soul_fungus"),
+              getItem("soul_turf")
+        );
+        blockItems.removeAll(generatedBlockItems);
+
+        Set<Item> inventoryItems = Set.of(
+              getItem("spirit_fence"),
+              getItem("spirit_button")
+        );
+        blockItems.removeAll(inventoryItems);
+
         // Specific cases
-        blockItems.remove(ForgeRegistries.ITEMS.getValue(modLoc("spirit_fence")));
-        inventoryItem(AderBlocks.SPIRIT_FENCE.get().asItem());
-
+        blockItems.remove(getItem("spirit_nylium"));
         // TODO: Spirit Nylium model
-        blockItems.remove(ForgeRegistries.ITEMS.getValue(modLoc("spirit_nylium")));
+        blockItems.remove(getItem("spirit_sign"));
+        generatedItem(AderItems.SPIRIT_SIGN.get());
+        // TODO: Spirit Door
 
-        blockItems.forEach(this::blockItem);
         items.forEach(this::generatedItem);
+        blockItems.forEach(this::blockItem);
+        generatedBlockItems.forEach(this::generatedBlockItem);
+        inventoryItems.forEach(this::inventoryItem);
     }
 
     private void blockItem(Item item) {
@@ -49,9 +63,13 @@ public class AderItemModelProvider extends ItemModelProvider {
               .texture("layer0", itemLoc(name(item)));
     }
 
+    private void generatedBlockItem(Item item) {
+        withExistingParent(name(item), "item/generated")
+              .texture("layer0", blockLoc(name(item)));
+    }
+
     private void inventoryItem(Item fence) {
-        withExistingParent(name(fence), blockLoc(name(fence) + "_inventory")
-        );
+        withExistingParent(name(fence), blockLoc(name(fence) + "_inventory"));
     }
 
     private ResourceLocation blockLoc(String name) {
@@ -60,6 +78,10 @@ public class AderItemModelProvider extends ItemModelProvider {
 
     private ResourceLocation itemLoc(String name) {
         return new ResourceLocation(AderOne.MODID, "item/" + name);
+    }
+
+    private Item getItem(String name) {
+        return ForgeRegistries.ITEMS.getValue(modLoc(name));
     }
 
     private String name(Item item) {

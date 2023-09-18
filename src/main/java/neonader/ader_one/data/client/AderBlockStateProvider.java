@@ -12,6 +12,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Map;
+import java.util.Objects;
 
 import static neonader.ader_one.registry.AderBlocks.*;
 
@@ -30,6 +31,11 @@ public class AderBlockStateProvider extends BlockStateProvider {
         woodBlock((RotatedPillarBlock) SPIRIT_HYPHAE.get(), SPIRIT_STEM.get());
         logBlock((RotatedPillarBlock) STRIPPED_SPIRIT_STEM.get());
         woodBlock((RotatedPillarBlock) STRIPPED_SPIRIT_HYPHAE.get(), STRIPPED_SPIRIT_STEM.get());
+        crossBlock(SOUL_FUNGUS.get());
+        pottedBlock("soul_fungus", POTTED_SOUL_FUNGUS.get());
+        crossBlock(SOUL_TURF.get());
+        pottedBlock("soul_turf_pot", POTTED_SOUL_TURF.get());
+        simpleBlock(SOUL_WART_BLOCK.get());
     }
 
     private void blockFamily(BlockFamily family) {
@@ -127,6 +133,20 @@ public class AderBlockStateProvider extends BlockStateProvider {
         }
     }
 
+    private void crossBlock(Block block) {
+        simpleBlock(block, models().withExistingParent(
+              name(block),
+              "block/cross"
+        ).texture("cross", blockTexture(block)).renderType("minecraft:cutout"));
+    }
+
+    private void pottedBlock(String plantTexture, Block block) {
+        simpleBlock(block, models().withExistingParent(
+              name(block),
+              "block/flower_pot_cross"
+        ).texture("plant", modLoc("block/" + plantTexture)).renderType("minecraft:cutout"));
+    }
+
     private void woodBlock(RotatedPillarBlock woodBlock, Block logBlock) {
         axisBlock(
               woodBlock,
@@ -147,7 +167,7 @@ public class AderBlockStateProvider extends BlockStateProvider {
     }
 
     private String name(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block).getPath();
+        return Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getPath();
     }
 
     private ResourceLocation extend(ResourceLocation rl, String suffix) {
